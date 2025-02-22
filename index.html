@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A little something</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background: #fff;
+        }
+        h1, h2 {
+            color: #FF6B6B;
+        }
+        button {
+            background: #FF9A9E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #FF6B6B;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="welcome-screen">
+        <h1>Are you feeling a bit down?</h1>
+        <button onclick="showMessage(true)">Yes</button>
+    </div>
+
+    <div class="container" id="message" style="display: none;">
+        <p>It’s okay to feel that way — remember, it’s just you here. You’re safe.</p>
+        <h2>I love you, bro ❤️</h2>
+    </div>
+
+    <div class="container" id="fun-zone" style="display: none;">
+        <h2>Let’s brighten your day!</h2>
+        <button onclick="showJoke()">Tell me a joke</button>
+        <button onclick="showLetter()">Open a letter</button>
+        <button onclick="showPickMeUp()">Get a Pick-Me-Up</button>
+        
+        <div id="joke" style="display: none;"></div>
+        <div id="letter" style="display: none;">
+            <p> Hey, I know it has been a rough time but I want you to remember that you are an amazing person, and the world is better with you in it. Keep being you, because you are truly special. You are the strongest person I know even if you may not feel like it, also just know it is okay to let people in we all love you and care for you. Heads up, I promise to take you anywhere you want whenever. I promise to stay in your life until you ask me to leave. Pinky Promise 💫</p>
+        </div>
+        <div id="pickMeUp" style="display: none;"></div>
+    </div>
+
+    <script>
+        function hideAll() {
+            document.getElementById('joke').style.display = 'none';
+            document.getElementById('letter').style.display = 'none';
+            document.getElementById('pickMeUp').style.display = 'none';
+        }
+
+        function showMessage(isSad) {
+            document.getElementById('welcome-screen').style.display = 'none';
+            document.getElementById('message').style.display = 'block';
+            
+            setTimeout(() => {
+                document.getElementById('message').style.display = 'none';
+                document.getElementById('fun-zone').style.display = 'block';
+            }, 3000);
+        }
+
+        function showJoke() {
+            hideAll();
+            const jokes = [
+                "Why don’t skeletons fight each other? They don’t have the guts!",
+                "What do you call fake spaghetti? An impasta!",
+                "Why did the bicycle fall over? It was two-tired!"
+            ];
+            const joke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById('joke').innerHTML = `<p>${joke}</p>`;
+            document.getElementById('joke').style.display = 'block';
+        }
+
+        function showLetter() {
+            hideAll();
+            document.getElementById('letter').style.display = 'block';
+        }
+
+        function showPickMeUp() {
+            hideAll();
+            const pickMeUps = [
+                "You are stronger than you think!",
+                "Your smile can brighten even the darkest day.",
+                "You are capable of amazing things.",
+                "You matter, and your presence makes a difference.",
+                "Believe in yourself — you’ve got this!"
+            ];
+            const message = pickMeUps[Math.floor(Math.random() * pickMeUps.length)];
+            document.getElementById('pickMeUp').innerHTML = `<p>${message}</p>`;
+            document.getElementById('pickMeUp').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
